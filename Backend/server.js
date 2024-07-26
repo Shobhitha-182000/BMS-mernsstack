@@ -9,9 +9,11 @@ const connectDB=require('./utils/db')
 connectDB();
 const UserModel=require('./models/User')
 const authRouters=require('./routes/authRoutes');
+const invoiceRouters=require('./routes/InvoiceRoutes');
+const Invoice=require('./models/Invoice')
 
 app.use('/auth',authRouters);
-
+app.use('/user',invoiceRouters)
 
 
 

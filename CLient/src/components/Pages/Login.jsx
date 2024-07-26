@@ -11,9 +11,11 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/auth/login', { email, password });
+            const response = await axios.post('http://localhost:3000/auth/login', { email, password });
             const { token } = response.data;
-            localStorage.setItem('token', token);
+            console.log(response.data.data.name)
+            localStorage.setItem('username', response.data.data.name);
+           
            Navigate('/user/dashboard');
         } catch (error) {
             console.error("Login failed", error);

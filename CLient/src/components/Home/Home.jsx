@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
-import Billing from '/images/billing.jpg';
 import Lottie from 'react-lottie';
 import AnimationData from './Animation - 1721890018482.json';
-import Immensphere from '/images/immensphere.jpg'
-import { Link, useNavigate } from 'react-router-dom';
+import Immensphere from '/images/immensphere.jpg';
+import Login from '../Pages/Login';
+import Signup from '../Pages/Signup';
 
 const Home = () => {
-const Navigate=useNavigate();
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [isSignupOpen, setSignupOpen] = useState(false);
 
   const defaultOptions = {
     loop: true,
@@ -18,13 +19,31 @@ const Navigate=useNavigate();
     }
   };
 
+  const handleLoginClick = () => {
+    setLoginOpen(!isLoginOpen);
+    setSignupOpen(false);  
+  };
+
+  const handleSignupClick = () => {
+    setSignupOpen(!isSignupOpen);
+    setLoginOpen(false);   
+  };
+
   return (
     <div className='home-container'>
       <div className="top-nav">
-        <div className="left-side-logo"><img src={Immensphere}/></div>
-        <button className="login" onClick={()=>Navigate('./login')}> Login </button>
-        <button className="signup" onClick={()=>Navigate('./signup')}> Signup </button>
+        <div className="left-side-logo">
+          <img src={Immensphere} alt="Immensphere Logo" />
+        </div>
+        <button className="login" onClick={handleLoginClick}> 
+          {isLoginOpen ? 'Close Login' : 'Login'} 
+        </button>
+        <button className="signup" onClick={handleSignupClick}> 
+          {isSignupOpen ? 'Close Signup' : 'Signup'} 
+        </button>
       </div>
+      {isLoginOpen && <Login />}
+      {isSignupOpen && <Signup />}
       <div className="main-content">
         <div className="left-side-content">
           <Lottie options={defaultOptions} height={400} width={400} />
@@ -35,6 +54,7 @@ const Navigate=useNavigate();
           </h1>
         </div>
       </div>
+
     </div>
   );
 };

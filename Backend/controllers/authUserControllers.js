@@ -8,6 +8,7 @@ const Signup=async(req,res)=>{
         const {name,email,password}=req.body;
         
         const user=await User.findOne({email});
+        console.log(user);
         if(!user){
             const hashedPassword=await bcrypt.hash(password,10)
             const newUser=new User({name,email,password:hashedPassword})
@@ -31,6 +32,7 @@ const Login=async(req,res)=>{
            const isValidPassword=await bcrypt.compare(password,user.password);
            if(isValidPassword){
             const token=jwt.sign({id:user._id,name:user.name},process.env.JWT_SECRETKEY,{expiresIn:'45d'})
+            console.log(token);
             res.cookie("token", token, { httpOnly: true });
             const thirtyDaysInSeconds = 30 * 24 * 60 * 60;  
             cache.set(`user_${user._id}`, user.name, thirtyDaysInSeconds);
