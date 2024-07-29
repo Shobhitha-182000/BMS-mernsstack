@@ -33,18 +33,21 @@ const AddInvoice = async (req, res) => {
                 rate,
                 sub_total,
                 tax,
+                amount,
                 discount,
+                total,
                 Note,
             } = req.body;
 
             const logo = req.file.filename;
             console.log('logo',logo);
+            console.log('total',total);
             const formattedDate = formatDate(date);
             const formattedDueDate = formatDate(due_date);
 
-            const amount = qty * rate;
-            const total = sub_total + tax;
-            const calculatedTax = (amount * 0.18 + amount - discount);
+            // const amount = qty * rate;
+            // const total = sub_total + tax;
+            // const calculatedTax = (amount * 0.18 + amount - discount);
 
             const newInvoice = await Invoice.create({
                 logo,
@@ -59,7 +62,7 @@ const AddInvoice = async (req, res) => {
                 amount,
                 total,
                 sub_total,
-                tax: calculatedTax,
+                tax,
                 discount,
                 Note,
             });
@@ -71,8 +74,27 @@ const AddInvoice = async (req, res) => {
         }
     });
 };
+const getOneInvoice=async(req,res)=>{
+     try {
+        const {invoice_no}=req.params;
 
-module.exports = { AddInvoice };
+    const invoice=await Invoice.findOne({invoice_no});
+    console.log(invoice_no);
+    if(invoice){
+        const details=invoice.date;
+
+        console.log(invoice);
+        return res.status(202).json({data:invoice,message:'Found'})
+    }
+    return res.status(401).json({message:'Not Found'})
+        
+     } catch (error) {
+        console.log(error);
+     }
+    
+}
+
+module.exports = { AddInvoice ,getOneInvoice};
 
 function formatDate(date) {
     return new Date(date).toISOString().split('T')[0];

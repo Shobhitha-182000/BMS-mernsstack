@@ -1,15 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './GenerateInvoice.css';
-import { IoMdAdd } from 'react-icons/io';
-import axios from 'axios';
-import { FaCloudUploadAlt } from 'react-icons/fa';
-import { toast } from 'react-toastify';
+import React, { useState } from 'react'
 
-const GenerateInvoice = () => {
-    const dateIssuedRef = useRef(null);
-    const dueDateRef = useRef(null);
-
-    const [logo, setLogo] = useState(null);
+const DisplayInvoice = () => {
+    const [logo, setLogo] = useState();
     const [invoiceNo, setInvoiceNo] = useState('');
     const [company, setCompany] = useState('');
     const [billTo, setBillTo] = useState('');
@@ -19,8 +11,7 @@ const GenerateInvoice = () => {
     const [tax, setTax] = useState('');
     const [discount, setDiscount] = useState('');
     const [note, setNote] = useState('');
-    const [total, setTotal] = useState(0);
-    const [subTotal, setSubTotal] = useState(0);
+    const [total, setTotal] = useState('');
 
     useEffect(() => {
         const today = new Date().toISOString().split('T')[0];
@@ -40,7 +31,6 @@ const GenerateInvoice = () => {
         const updatedItems = [...items];
         updatedItems[index][field] = value;
         setItems(updatedItems);
-        updateCalculations();
     };
 
     const addItem = () => {
@@ -48,34 +38,18 @@ const GenerateInvoice = () => {
     };
 
     const calculateSubtotal = () => {
-        const subtotalAmount = items.reduce((acc, item) => acc + (parseFloat(item.qty) * parseFloat(item.rate) || 0), 0);
-        setSubTotal(subtotalAmount);
-        return subtotalAmount;
+        return items.reduce((acc, item) => acc + (item.qty * item.rate), 0);
     };
 
     const calculateTotal = () => {
         const subtotal = calculateSubtotal();
-        const discountAmount = subtotal * (parseFloat(discount) / 100 || 0);
-        const taxAmount = (subtotal - discountAmount) * (parseFloat(tax) / 100 || 0);
-        const totalAmount = subtotal - discountAmount + taxAmount;
-        setTotal(totalAmount);
-        return totalAmount;
-    };
-
-    const updateCalculations = () => {
-        calculateSubtotal();
-        calculateTotal();
+        const discountAmount = subtotal * (discount / 100);
+        const taxAmount = (subtotal - discountAmount) * (tax / 100);
+        return subtotal - discountAmount + taxAmount;
     };
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
-        // Ensure calculations are up-to-date
-        const calculatedSubtotal = calculateSubtotal();
-        const calculatedTotal = calculateTotal();
-
-        console.log('Calculated Subtotal:', calculatedSubtotal);
-        console.log('Calculated Total:', calculatedTotal);
 
         const formData = new FormData();
         formData.append('logo', logo);
@@ -88,8 +62,6 @@ const GenerateInvoice = () => {
         formData.append('tax', tax);
         formData.append('discount', discount);
         formData.append('note', note);
-        formData.append('sub_total', calculatedSubtotal);
-        formData.append('total', calculatedTotal);
 
         try {
             const response = await axios.post('http://localhost:3000/user/invoice', formData, {
@@ -97,11 +69,9 @@ const GenerateInvoice = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log('Invoice created:', response.data);
-            toast.success('Saved successfully');
+            console.log('Invoice created:', response.data.data.logo);
         } catch (error) {
             console.error('Error creating invoice:', error);
-            toast.error(error)
         }
     };
 
@@ -156,9 +126,9 @@ const GenerateInvoice = () => {
                             {items.map((item, index) => (
                                 <tr key={index}>
                                     <td><input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} /></td>
-                                    <td><input type="number" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} /></td>
-                                    <td><input type="number" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} /></td>
-                                    <td>{(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}</td>
+                                    <td><input type="text" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} /></td>
+                                    <td><input type="text" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} /></td>
+                                    <td>{item.rate * item.qty}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -170,7 +140,7 @@ const GenerateInvoice = () => {
                     </div>
                     <div className="total">
                         <div className="subtotal">Subtotal
-                            <span style={{ marginLeft: '20px', backgroundColor: 'white' }}><b>{subTotal.toFixed(2)}</b></span>
+                            <span style={{ marginLeft: '20px', backgroundColor: 'white' }}><b>{calculateSubtotal()}</b></span>
                         </div>
                         <div className="tax">Tax (%)
                             <input type="number" style={{ marginLeft: '60px' }} value={tax} onChange={(e) => setTax(e.target.value)} />
@@ -179,7 +149,7 @@ const GenerateInvoice = () => {
                             <input type="number" style={{ marginLeft: '28px' }} value={discount} onChange={(e) => setDiscount(e.target.value)} />
                         </div>
                         <div className="grandtotal">Grand Total
-                            <span style={{ marginLeft: '20px', backgroundColor: 'white', color: 'green' }}><b>{total.toFixed(2)}</b></span>
+                            <span style={{ marginLeft: '20px', backgroundColor: 'white', color:'green'  }}><b>{calculateTotal()}</b></span>
                         </div>
                     </div>
                 </div>
@@ -187,6 +157,6 @@ const GenerateInvoice = () => {
             </form>
         </div>
     );
-};
+}
 
-export default GenerateInvoice;
+export default DisplayInvoice

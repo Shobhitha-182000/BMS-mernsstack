@@ -42,7 +42,7 @@ const invoiceSchema=new Mongoose.Schema({
     },
     rate:{
         type:Number,
-        required:true 
+        
     },
     total:{
         type:Number,

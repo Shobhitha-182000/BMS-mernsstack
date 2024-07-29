@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import { FaCloudUploadAlt } from "react-icons/fa";
 import GenerateInvoice from '../Invoice/GenerateInvoice';
+import GetInvoice from '../DisplayInvoices/GetInvoice';
 
 const Dashboard = () => {
     const [userName, setUserName] = useState('');
@@ -31,8 +32,10 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <div className="top-nav">
-                <img src='/images/immensphere.jpg' alt='company logo'/>{userName}
+                <img src='/images/immensphere.jpg' alt='company logo'/> <b>{userName}</b>
+                <div className="invoice" style={{marginLeft:'300px',marginTop:'20px'}}><GetInvoice/></div>
                 <div className="nav-right-side">
+                  
                     <button className="generate" onClick={generateHandler}>
                         {isGenerateOpen ? 'Close' : 'Generate'}
                     </button>

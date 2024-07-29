@@ -7,19 +7,23 @@ import Dashboard from "./components/MainPage/Dashboard/Dashboard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GenerateInvoice from "./components/MainPage/Invoice/GenerateInvoice";
+import GetInvoice from "./components/MainPage/DisplayInvoices/GetInvoice";
 
 function App() {
   return (
-    <BrowserRouter>
+     <>
+     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/user/dashboard" element={<Dashboard />} />
         <Route path="/user/saveinvoice" element={<GenerateInvoice />} />
-        {/* <ToastContainer/> */}
+        <Route path="/user/getinvoice" element={<GetInvoice />} />
+       
       </Routes>
     </BrowserRouter>
+      <ToastContainer/></>
   );
 }
 
