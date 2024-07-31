@@ -73,42 +73,6 @@
     width: 80px;
 }
 
-/* .dashboard-container .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.dashboard-container .main-content label {
-    display: block;
-    font-size: 16px;
-    color: rgb(80, 80, 80);
-    margin-bottom: 10px;
-}
-
-.dashboard-container .main-content input[type="file"] {
-    display: none; /* Hide the default file input */
-/* }
-
-.dashboard-container .main-content .custom-file-upload {
-    display: inline-block;
-    cursor: pointer;
-    background-color: rgb(240, 240, 240);
-    border: 2px solid rgb(200, 200, 200);
-    border-radius: 10px;
-    padding: 10px;
-    width: 250px;
-    height: 150px;
-    text-align: center;
-    font-size: 16px;
-    color: rgb(80, 80, 80);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */ 
 .dashboard-container .main-content {
     flex: 1;
     display: flex;
@@ -124,7 +88,7 @@
     justify-content: center;
     cursor: pointer;
     background-color: rgb(164, 226, 164);  
-    border: 2px dotted  rgb(19, 18, 18);
+    border: 2px dotted rgb(19, 18, 18);
     border-radius: 10px;
     padding: 20px;
     width: 300px;  
@@ -141,4 +105,10 @@
 .dashboard-container .main-content input[type="file"] {
     display: none;  
 }
-
+.getinvoice{
+    background-color:#fff;
+    width: 300px;
+    height: 50px;
+    border-radius: 5px;
+    border-color:aqua;
+}

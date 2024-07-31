@@ -70,7 +70,7 @@ const GenerateInvoice = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        // Ensure calculations are up-to-date
+        
         const calculatedSubtotal = calculateSubtotal();
         const calculatedTotal = calculateTotal();
 

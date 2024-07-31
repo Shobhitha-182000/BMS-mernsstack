@@ -1,4 +1,4 @@
-const { AddInvoice, getOneInvoice } = require('../controllers/InvoiceController');
+const { AddInvoice, getOneInvoice, EditInvoice } = require('../controllers/InvoiceController');
 
 const router=require('express').Router();
 // const multer = require('multer');
@@ -22,6 +22,7 @@ const router=require('express').Router();
 
 
 router.post('/invoice',AddInvoice)
+router.post('/invoice/:invoice_no',EditInvoice)
 router.get('/invoice/:invoice_no',getOneInvoice);
 
 

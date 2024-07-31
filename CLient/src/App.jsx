@@ -8,6 +8,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GenerateInvoice from "./components/MainPage/Invoice/GenerateInvoice";
 import GetInvoice from "./components/MainPage/DisplayInvoices/GetInvoice";
+import PdfViewer from "./components/MainPage/ExtractPdf/PdfViewer";
+import EditPdf from "./components/MainPage/ExtractPdf/EditPdf";
+import PdfUpload from "./components/MainPage/ExtractPdf/PdfUpload";
 
 function App() {
   return (
@@ -20,6 +23,10 @@ function App() {
         <Route path="/user/dashboard" element={<Dashboard />} />
         <Route path="/user/saveinvoice" element={<GenerateInvoice />} />
         <Route path="/user/getinvoice" element={<GetInvoice />} />
+        <Route path="/view-pdf" element={<PdfViewer />} />
+        <Route path="/edit-pdf" element={<EditPdf/>} />
+        <Route path="/pdf" element={<PdfUpload/>} />
+
        
       </Routes>
     </BrowserRouter>

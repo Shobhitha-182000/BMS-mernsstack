@@ -11,9 +11,11 @@ const UserModel=require('./models/User')
 const authRouters=require('./routes/authRoutes');
 const invoiceRouters=require('./routes/InvoiceRoutes');
 const Invoice=require('./models/Invoice')
+const textExtract=require('./routes/textExtraxtRoutes')
 
 app.use('/auth',authRouters);
 app.use('/user',invoiceRouters)
+app.use('/txt',textExtract);
 
 
 
