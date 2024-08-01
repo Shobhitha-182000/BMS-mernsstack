@@ -69,14 +69,10 @@ const GenerateInvoice = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
-        
+    
         const calculatedSubtotal = calculateSubtotal();
         const calculatedTotal = calculateTotal();
-
-        console.log('Calculated Subtotal:', calculatedSubtotal);
-        console.log('Calculated Total:', calculatedTotal);
-
+    
         const formData = new FormData();
         formData.append('logo', logo);
         formData.append('invoice_no', invoiceNo);
@@ -84,13 +80,13 @@ const GenerateInvoice = () => {
         formData.append('bill_to', billTo);
         formData.append('date', date);
         formData.append('due_date', dueDate);
-        formData.append('items', JSON.stringify(items));
+        formData.append('items', JSON.stringify(items)); 
         formData.append('tax', tax);
         formData.append('discount', discount);
         formData.append('note', note);
         formData.append('sub_total', calculatedSubtotal);
         formData.append('total', calculatedTotal);
-
+    
         try {
             const response = await axios.post('http://localhost:3000/user/invoice', formData, {
                 headers: {
@@ -101,10 +97,10 @@ const GenerateInvoice = () => {
             toast.success('Saved successfully');
         } catch (error) {
             console.error('Error creating invoice:', error);
-            toast.error(error)
+            toast.error('Error creating invoice');
         }
     };
-
+    
     return (
         <div className="invoice_container">
             <form className="form" onSubmit={submitHandler}>

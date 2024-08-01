@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './GetInvoice.css';
-import { IoMdDownload } from "react-icons/io";
+import { IoMdDownload } from 'react-icons/io';
 import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 import { useNavigate } from 'react-router-dom';
 
- 
 const formatDate = (date) => {
+    if (!(date instanceof Date) || isNaN(date.getTime())) {
+        return 'Invalid Date';
+    }
     const day = ("0" + date.getDate()).slice(-2);
     const month = ("0" + (date.getMonth() + 1)).slice(-2);
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
 };
- 
+
 const parseDate = (dateString) => {
-    const [day, month, year] = dateString.split('/').map(Number);
-    return new Date(year, month - 1, day);  
+    if (typeof dateString === 'string') {
+        const date = new Date(dateString);
+        return isNaN(date.getTime()) ? null : date;
+    }
+    return dateString;
 };
 
 const GetInvoice = () => {
     const [invoiceNo, setInvoiceNo] = useState('');
     const [invoiceData, setInvoiceData] = useState(null);
     const [error, setError] = useState(null);
-    const Navigate=useNavigate()
+    const navigate = useNavigate();
 
     const clickHandler = async () => {
         try {
@@ -37,6 +42,9 @@ const GetInvoice = () => {
     };
 
     const safeJsonParse = (data) => {
+        if (Array.isArray(data)) {
+            return data;
+        }
         try {
             return JSON.parse(data);
         } catch (e) {
@@ -59,14 +67,6 @@ const GetInvoice = () => {
             const imgBlob = dataURLtoBlob(imgData);
             saveAs(imgBlob, `${invoiceData.invoice_no}.jpg`);
         });
-        // const userWantsToSeeImage = confirm('Downoload succesfully...Do you want to see the file?');
-        // if(userWantsToSeeImage){
-        //     Navigate('/view-pdf');
-        //     const image=localStorage.setItem('pic',imgBlob)
-        // }
-        
-        
-        
     };
 
     const dataURLtoBlob = (dataURL) => {
@@ -132,7 +132,7 @@ const GetInvoice = () => {
                             </div>
                             <div className="invoice-section-5">
                                 <h3>Due Date:</h3>
-                                <p>{formatDate(new Date(invoiceData.due_date))}</p>
+                                <p>{formatDate(parseDate(invoiceData.due_date))}</p>
                             </div>
                         </div>
                     </div>
@@ -148,14 +148,16 @@ const GetInvoice = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {invoiceData.items ? safeJsonParse(invoiceData.items).map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.description}</td>
-                                    <td>{safeToFixed(item.rate)}</td>
-                                    <td>{item.qty}</td>
-                                    <td>{safeToFixed(item.rate * item.qty)}</td>
-                                </tr>
-                            )) : (
+                            {invoiceData.items && Array.isArray(invoiceData.items) ? (
+                                invoiceData.items.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.description}</td>
+                                        <td>{item.rate}</td>
+                                        <td>{item.qty}</td>
+                                        <td>{safeToFixed(item.rate * item.qty)}</td>
+                                    </tr>
+                                ))
+                            ) : (
                                 <tr>
                                     <td colSpan="4">No items found</td>
                                 </tr>

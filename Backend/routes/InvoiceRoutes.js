@@ -22,7 +22,7 @@ const router=require('express').Router();
 
 
 router.post('/invoice',AddInvoice)
-router.post('/invoice/:invoice_no',EditInvoice)
+router.put('/invoice/:invoice_no',EditInvoice)
 router.get('/invoice/:invoice_no',getOneInvoice);
 
 

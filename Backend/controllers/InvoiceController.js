@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).single('logo');
 
- 
 const AddInvoice = async (req, res) => {
     upload(req, res, async (err) => {
         if (err) {
@@ -30,22 +29,20 @@ const AddInvoice = async (req, res) => {
                 date,
                 due_date,
                 items,
-                qty,
-                rate,
                 sub_total,
                 tax,
-                amount,
                 discount,
                 total,
-                Note,
+                note
             } = req.body;
 
             const logo = req.file.filename;
-            console.log('logo', logo);
-            console.log('total', total);
 
-            const formattedDate = formatDate(date);
-            const formattedDueDate = formatDate(due_date);
+            const formattedDate = new Date(date); 
+            const formattedDueDate = new Date(due_date); 
+
+            // Parse items as JSON if it's a string
+            const parsedItems = Array.isArray(items) ? items : JSON.parse(items);
 
             const newInvoice = await Invoice.create({
                 logo,
@@ -54,24 +51,22 @@ const AddInvoice = async (req, res) => {
                 bill_to,
                 date: formattedDate,
                 due_date: formattedDueDate,
-                items,
-                qty,
-                rate,
-                amount,
-                total,
-                sub_total,
-                tax,
-                discount,
-                Note,
+                items: parsedItems,
+                sub_total: parseFloat(sub_total),
+                tax: parseFloat(tax),
+                discount: parseFloat(discount),
+                total: parseFloat(total),
+                note
             });
 
             return res.status(200).json({ data: newInvoice, message: "Invoice created successfully" });
         } catch (error) {
-            console.log(error);
+            console.error('Error adding invoice:', error);
             return res.status(500).json({ message: "Internal server error" });
         }
     });
 };
+
 
 
 const EditInvoice = async (req, res) => {
@@ -99,9 +94,8 @@ const EditInvoice = async (req, res) => {
             } = req.body;
 
             const logo = req.file ? req.file.filename : null;
-
-            const formattedDate = formatDate(date);
-            const formattedDueDate = formatDate(due_date);
+            const formattedDate = new Date(date); 
+            const formattedDueDate = new Date(due_date); 
 
             const invoice = await Invoice.findOne({ invoice_no });
             if (!invoice) {
@@ -120,11 +114,12 @@ const EditInvoice = async (req, res) => {
             invoice.amount = amount || invoice.amount;
             invoice.discount = discount || invoice.discount;
             invoice.total = total || invoice.total;
-            invoice.Note = Note || invoice.Note;
+            invoice.note = Note || invoice.note;
 
             if (logo) {
                 invoice.logo = logo;
             }
+            console.log(invoice.total)
 
             await invoice.save();
 
@@ -167,4 +162,5 @@ function formatDate(date) {
 }
 
 
+ 
  
