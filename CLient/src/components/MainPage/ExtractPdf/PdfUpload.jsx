@@ -24,7 +24,7 @@ const PdfUpload = () => {
     const [tax, setTax] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [total, setTotal] = useState(0);
-    const [refreshKey, setRefreshKey] = useState(0); // Key to force refresh PdfViewer
+    const [refreshKey, setRefreshKey] = useState(0); 
 
     useEffect(() => {
         if (!image) return;
@@ -43,7 +43,7 @@ const PdfUpload = () => {
                 setInvNo(invoiceNo);
                 getInvoiceData(invoiceNo);
                 setError(null);
-                setPdfReady(false); // Ensure PDF viewer is not shown until data is fetched
+                setPdfReady(false);  
             } catch (error) {
                 console.error('Error uploading image:', error);
                 setError('Error extracting data from image.');
@@ -270,3 +270,22 @@ const PdfUpload = () => {
 };
 
 export default PdfUpload;
+
+
+
+// <div className="invoice-summary">
+// <p><strong>Subtotal:</strong> {subTotal.toFixed(2)}</p>
+// <p><strong>Tax (%):</strong></p>
+// <input type="number" value={tax || ''} onChange={(e) => setTax(e.target.value)} />
+// <p><strong>Discount (%):</strong></p>
+// <input type="number" value={discount || ''} onChange={(e) => setDiscount(e.target.value)} />
+// <p><strong>Total:</strong> {total.toFixed(2)}</p>
+// </div>
+// <div className="note-container">
+// <p><strong>Note:</strong></p>
+// <textarea name="note" value={formData.note || ''} onChange={handleChange} />
+// </div>
+// <div className="last-btn">
+// <button onClick={editHandler} className="save-button">Update</button>
+// <button onClick={() => setEditOpen(false)} className="cancel-button">Cancel</button>
+// </div>

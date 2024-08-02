@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { toast } from 'react-toastify';
  
 
 const Signup = () => {
@@ -14,10 +15,10 @@ const Signup = () => {
         e.preventDefault();
         try {
             await axios.post('http://localhost:3000/auth/signup', { name, email, password });
-            // toast.success();
+            toast.success('successfully register');
             Navigate('/login');
         } catch (error) {
-            // toast.error();
+            toast.error(error);
             console.error("Signup failed", error);
         }
     };

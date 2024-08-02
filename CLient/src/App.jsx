@@ -11,6 +11,7 @@ import GetInvoice from "./components/MainPage/DisplayInvoices/GetInvoice";
 import PdfViewer from "./components/MainPage/ExtractPdf/PdfViewer";
 import EditPdf from "./components/MainPage/ExtractPdf/EditPdf";
 import PdfUpload from "./components/MainPage/ExtractPdf/PdfUpload";
+ 
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/view-pdf" element={<PdfViewer />} />
         <Route path="/edit-pdf" element={<EditPdf/>} />
         <Route path="/pdf" element={<PdfUpload/>} />
+         
 
        
       </Routes>

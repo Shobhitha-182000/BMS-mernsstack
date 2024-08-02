@@ -191,3 +191,169 @@
     border-radius: 10px;
     font-size: large;
 }
+@media (max-width: 768px) {
+    .invoice_container {
+        padding: 10px;
+        max-width: 100%;
+    }
+    
+    .first_container {
+        flex-direction: column;
+    }
+
+    .invoice_no {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .company-details, .bill_to {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .second-container {
+        flex-direction: column;
+    }
+
+    .third-container {
+        flex-direction: column;
+    }
+
+    .date-issued, .due_date {
+        margin-bottom: 10px;
+    }
+
+    .item-container table {
+        font-size: 14px;
+    }
+
+    .item-container th, .item-container td {
+        padding: 8px;
+    }
+
+    .notes input {
+        height: 80px;
+    }
+
+    .total {
+        font-size: 14px;
+    }
+
+    .savedetails button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .company-logo {
+        width: 100%;
+        height: auto;
+        padding-top: 10px;
+        padding-left: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .invoice_container {
+        padding: 5px;
+    }
+
+    .form {
+        padding: 0;
+    }
+
+    .first_container {
+        flex-direction: column;
+    }
+
+    .invoice_no {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .company-details, .bill_to {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .date-issued, .due_date {
+        flex-direction: column;
+    }
+
+    .date-issued input, .due_date input {
+        width: 100%;
+    }
+
+    .item-container {
+        overflow-x: auto; /* Enable horizontal scrolling for the table */
+    }
+
+    .item-container table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+    }
+
+    .item-container thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    .item-container tbody {
+        display: block;
+        width: 100%;
+    }
+
+    .item-container tr {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px; /* Add space between rows */
+    }
+
+    .item-container td {
+        display: block;
+        text-align: right;
+        padding: 6px;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .item-container td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+        background: #f2f2f2;
+        top: 0;
+        height: 100%;
+        line-height: 1.5;
+        white-space: nowrap;
+    }
+
+    .item-container td:last-child {
+        border-bottom: none;
+    }
+
+    .notes input {
+        height: 60px;
+    }
+
+    .total {
+        font-size: 12px;
+    }
+
+    .savedetails button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .company-logo {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+}
+

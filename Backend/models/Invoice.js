@@ -15,7 +15,7 @@ const InvoiceSchema = new Schema({
     bill_to: String,
     date: Date,
     due_date: Date,
-    items: [ItemSchema],  // Define items as an array of ItemSchema
+    items: [ItemSchema],  
     sub_total: Number,
     tax: Number,
     discount: Number,

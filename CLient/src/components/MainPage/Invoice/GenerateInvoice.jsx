@@ -138,28 +138,48 @@ const GenerateInvoice = () => {
                     </div>
                 </div>
                 <div className="item-container">
-                    <div className="table-end" onClick={addItem}><IoMdAdd /></div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Rate</th>
-                                <th>Qty</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {items.map((item, index) => (
-                                <tr key={index}>
-                                    <td><input type="text" value={item.description} onChange={(e) => handleItemChange(index, 'description', e.target.value)} /></td>
-                                    <td><input type="number" value={item.rate} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} /></td>
-                                    <td><input type="number" value={item.qty} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} /></td>
-                                    <td>{(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Rate</th>
+                <th>Qty</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {items.map((item, index) => (
+                <tr key={index}>
+                    <td data-label="Item">
+                        <input 
+                            type="text" 
+                            value={item.description} 
+                            onChange={(e) => handleItemChange(index, 'description', e.target.value)} 
+                        />
+                    </td>
+                    <td data-label="Rate">
+                        <input 
+                            type="number" 
+                            value={item.rate} 
+                            onChange={(e) => handleItemChange(index, 'rate', e.target.value)} 
+                        />
+                    </td>
+                    <td data-label="Qty">
+                        <input 
+                            type="number" 
+                            value={item.qty} 
+                            onChange={(e) => handleItemChange(index, 'qty', e.target.value)} 
+                        />
+                    </td>
+                    <td data-label="Amount">
+                        {(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
+
                 <div className="last-container">
                     <div className="notes">Notes
                         <input type="text" value={note} onChange={(e) => setNote(e.target.value)} />

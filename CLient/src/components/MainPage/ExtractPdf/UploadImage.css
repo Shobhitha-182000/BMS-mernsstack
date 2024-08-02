@@ -56,6 +56,7 @@
     flex: 1;
     gap: 20px;
     height: 100%;
+    transition: all 0.3s ease;
 }
 
 /* Image preview container styling */
@@ -64,29 +65,24 @@
     max-width: 600px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Center image by default */
     transition: all 0.3s ease;
 }
 
 .image-preview {
     width: 100%;
-    height: 120%;
+    height: auto;
     object-fit: cover;
     border: 1px solid #ddd;
     border-radius: 5px;
     transition: width 0.3s ease;
 }
 
-/* Larger image effect */
-.larger-image {
-    width: 150%;
-}
-
 /* When editing mode is active, shift the preview to the left */
 .edit-mode .image-preview-container {
-    flex: 1;
+    flex: 1; /* Adjusts the flex-grow and flex-basis to move left */
     max-width: none;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Align image to the left */
 }
 
 .edit-mode .image-preview {
@@ -253,4 +249,31 @@
 
 .cancel-button:hover {
     background-color: antiquewhite;
+}
+ 
+.content-container {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    height: 100%;
+    transition: all 0.3s ease;
+    justify-content: center;  
+}
+ 
+.pdf-viewer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    transition: all 0.3s ease;
+    max-width: 100%;
+    width: 100%;
+}
+
+ 
+.edit-mode .pdf-viewer-container {
+    justify-content: flex-start;  
+}
+ 
+.edit-mode .pdf-viewer-container .pdf-viewer {
+    width: 100%;
 }

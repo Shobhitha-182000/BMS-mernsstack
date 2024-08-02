@@ -14,6 +14,8 @@ const userSchema=new Mongoose.Schema({
     password:{
         type:String,
         required:true
+    },logo:{
+        type:String
     }
 },{timestamps:true})
 

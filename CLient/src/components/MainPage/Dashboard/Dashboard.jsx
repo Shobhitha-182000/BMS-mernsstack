@@ -41,7 +41,11 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             <div className="top-nav">
-                <img src='/images/immensphere.jpg' alt='company logo'/> <b>{userName}</b>
+                <div className="image-logo">
+                    <img src='/images/immensphere.jpg' alt='company logo'/> <b>{userName}</b>
+                </div>
+                 
+                
                 <div className="invoice" style={{ marginLeft: '300px', marginTop: '20px' }}>
                      <button onClick={getInvoiceHandler} className='getinvoice'>Get Invoice</button>
                 </div>

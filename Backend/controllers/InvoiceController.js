@@ -119,7 +119,7 @@ const EditInvoice = async (req, res) => {
             if (logo) {
                 invoice.logo = logo;
             }
-            console.log(invoice.total)
+            // console.log(invoice.total)
 
             await invoice.save();
 
@@ -136,11 +136,11 @@ const getOneInvoice=async(req,res)=>{
        const {invoice_no}=req.params;
 
    const invoice=await Invoice.findOne({invoice_no});
-   console.log(invoice_no);
+//    console.log(invoice_no);
    if(invoice){
        const details=invoice.date;
 
-       console.log(invoice);
+    //    console.log(invoice);
        return res.status(202).json({data:invoice,message:'Found'})
    }
    return res.status(401).json({message:'Not Found'})

@@ -105,10 +105,145 @@
 .dashboard-container .main-content input[type="file"] {
     display: none;  
 }
-.getinvoice{
-    background-color:#fff;
+
+.getinvoice {
+    background-color: #fff;
     width: 300px;
     height: 50px;
     border-radius: 5px;
-    border-color:aqua;
+    border-color: aqua;
 }
+
+@media (max-width: 1200px) {
+    .dashboard-container .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-container .nav-right-side {
+        margin: 10px 0;
+    }
+
+    .dashboard-container .generate {
+        width: 80px;
+    }
+
+    .dashboard-container .upload {
+        width: 150px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-container .top-nav {
+        height: auto;
+        padding: 10px;
+    }
+
+    .dashboard-container img {
+        height: 60px;
+        width: 60px;
+    }
+
+    .dashboard-container .main-content {
+        padding: 10px;
+    }
+
+    .dashboard-container .main-content .custom-file-upload {
+        width: 250px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container .top-nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .dashboard-container .nav-right-side {
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .dashboard-container .generate {
+        width: 70px;
+        font-size: small;
+    }
+
+    .dashboard-container .upload {
+        width: 120px;
+        padding: 8px;
+    }
+
+    .dashboard-container .main-content .custom-file-upload {
+        width: 200px;
+        font-size: medium;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-container .top-nav {
+        padding: 5px;
+        background-color: aqua;
+        width: 100%;
+        /* display: flex; */
+        align-items: center;
+        justify-content: space-between; 
+        height: 100px;
+        flex-wrap: nowrap;  
+    }
+    .image-logo{
+        background-color: #fff;
+        margin-right: 200px;
+    }
+
+    .dashboard-container img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .dashboard-container .top-nav .user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;  
+        
+    }
+
+    .dashboard-container .top-nav .nav-right-side {
+        display: flex;
+        align-items: center;
+        gap: 10px;  
+    }
+
+    .dashboard-container .generate,
+    .dashboard-container .getinvoice {
+        width: 80px;  
+        font-size: small;
+        padding: 5px; 
+        border: none;  
+        background-color: rgb(55, 0, 255);  
+        color: white;  
+        border-radius: 5px;  
+    }
+
+    .dashboard-container .generate:hover,
+    .dashboard-container .getinvoice:hover {
+        background-color: rgb(85, 0, 255); / 
+    }
+
+    .dashboard-container .upload {
+        display: none;  
+    }
+
+    .dashboard-container .main-content .custom-file-upload {
+        width: 150px;
+        font-size: small;
+        padding: 8px;
+        margin-top: 10px;  
+    }
+}
+
+
