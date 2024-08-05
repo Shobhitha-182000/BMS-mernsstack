@@ -1092,8 +1092,8 @@ const PdfViewer = ({ invNo }) => {
                                 <h3>{invoiceData.discount}%</h3>
                             </div>
                         </div>
-                        <div className="invoice-sect-4">
-                            <h3>Total:</h3>
+                        <div className="invoice-sect-4" style={{width:'250px'}}>
+                            <h3 style={{ color: 'green',marginLeft:'100px' }}>Total:</h3>
                             <h3 style={{ color: 'green' }}>{safeToFixed(invoiceData.total)}</h3>
                         </div>
                     </div>

@@ -152,6 +152,7 @@ const GenerateInvoice = () => {
                 <tr key={index}>
                     <td data-label="Item">
                         <input 
+                        className='item'
                             type="text" 
                             value={item.description} 
                             onChange={(e) => handleItemChange(index, 'description', e.target.value)} 
@@ -159,6 +160,7 @@ const GenerateInvoice = () => {
                     </td>
                     <td data-label="Rate">
                         <input 
+                        className='rate'
                             type="number" 
                             value={item.rate} 
                             onChange={(e) => handleItemChange(index, 'rate', e.target.value)} 
@@ -166,13 +168,15 @@ const GenerateInvoice = () => {
                     </td>
                     <td data-label="Qty">
                         <input 
+                        className='qty'
                             type="number" 
                             value={item.qty} 
                             onChange={(e) => handleItemChange(index, 'qty', e.target.value)} 
                         />
                     </td>
                     <td data-label="Amount">
-                        {(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}
+                        <div className="amount-fix">{(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}</div>
+                        
                     </td>
                 </tr>
             ))}
@@ -181,7 +185,7 @@ const GenerateInvoice = () => {
 </div>
 
                 <div className="last-container">
-                    <div className="notes">Notes
+                    <div className="notes"><label>Notes</label> 
                         <input type="text" value={note} onChange={(e) => setNote(e.target.value)} />
                     </div>
                     <div className="total">
@@ -192,7 +196,7 @@ const GenerateInvoice = () => {
                             <input type="number" style={{ marginLeft: '60px' }} value={tax} onChange={(e) => setTax(e.target.value)} />
                         </div>
                         <div className="discount">Discount (%)
-                            <input type="number" style={{ marginLeft: '28px' }} value={discount} onChange={(e) => setDiscount(e.target.value)} />
+                            <input type="number" style={{ marginLeft: '30px' }} value={discount} onChange={(e) => setDiscount(e.target.value)} />
                         </div>
                         <div className="grandtotal">Grand Total
                             <span style={{ marginLeft: '20px', backgroundColor: 'white', color: 'green' }}><b>{total.toFixed(2)}</b></span>

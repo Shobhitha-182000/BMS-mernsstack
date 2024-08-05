@@ -1,3 +1,4 @@
+ 
 .invoice_container {
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -7,20 +8,26 @@
     margin: 0 auto;
 }
 
+ input{
+    border: 1px solid grey;
+ }
 .form {
     display: flex;
     flex-direction: column;
 }
-
+ 
 .first_container, .second-container, .third-container, .last-container {
     margin-bottom: 20px;
 }
 
+ 
 .first_container {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;  
 }
 
+ 
 .log {
     flex: 1;
     display: flex;
@@ -28,7 +35,6 @@
     justify-content: space-between;
     font-size: 16px;
     font-weight: bold;
-    
 }
 
 .log input[type="file"] {
@@ -46,97 +52,97 @@
     display: inline-block;
 }
 
+ 
 .invoice_no {
     flex: 1;
     font-weight: bold;
-    margin-left: 400px;
+    margin-left: 300px;  
 }
-.invoice_no input{
-    margin-left: 20px;
+ 
+.invoice_no input {
+    margin-left: 10px;
     width: 100px;
 }
-.invoice_container .second-container {
- display: flex;
- color: white;
-    
-}
-
- .third-container, .last-container {
+ 
+.second-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;  
+    flex-wrap: wrap;  
 }
 
+ 
 .company_details, .bill_to {
-   display: block;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
     color: black;
+    min-width: 300px;  
+    box-sizing: border-box;
 }
 
+ 
 .company_details input, .bill_to input {
     display: block;
-    width: 100%;  
+    width: calc(100% - 20px); /* Full width minus padding */
     height: 30px;
     margin-top: 10px;
-    
 }
- 
 
+/* Styling for third container */
+.third-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
+}
 
+/* Date issued and due date styling */
 .date-issued, .due_date {
-    flex: 1;
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
+    min-width: 200px; /* Ensure minimum width for better alignment */
+    box-sizing: border-box;
 }
 
+/* Inputs within date issued and due date */
 .date-issued input, .due_date input {
-    width: 100%;  
+    width: calc(100% - 20px); /* Full width minus padding */
     margin-top: 10px;
     height: 30px;
 }
 
+/* Styling for item container */
 .item-container {
     margin-top: 20px;
 }
 
+/* Styling for table end section */
 .table-end {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
     cursor: pointer;
 }
-
+ 
 .item-container table {
     width: 100%;
     border-collapse: collapse;
 }
 
+    
 .item-container th, .item-container td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
 }
-
-.item-container th {
-    background-color: #f2f2f2;
-}
-
-.item-container td input[type='text'] {
-    width: 90%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
+ 
 .notes, .total {
-   
+    display: flex;
     justify-content: space-between;
-    gap: 20px;  
+    gap: 20px;
 }
-
+ 
 .notes {
     border: 1px solid #ddd;
     padding: 10px;
@@ -144,25 +150,24 @@
 }
 
 .notes input {
-    width: 100%;  
+    width: calc(100% - 20px); 
     margin-top: 10px;
     height: 100px;
 }
-
+    
 .total {
-    display:block;
+    display: block;
     font-size: 16px;
 }
 
 .total div {
-    
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 
+ 
 .savedetails {
-    
     margin-top: 20px;
     text-align: center;
 }
@@ -180,8 +185,8 @@
 .savedetails button:hover {
     background-color: rgb(30, 0, 180);
 }
-
-.company-logo{
+ 
+.company-logo {
     background-color: #e2ebe2;
     height: 50px;
     width: 150px;
@@ -191,67 +196,8 @@
     border-radius: 10px;
     font-size: large;
 }
-@media (max-width: 768px) {
-    .invoice_container {
-        padding: 10px;
-        max-width: 100%;
-    }
-    
-    .first_container {
-        flex-direction: column;
-    }
-
-    .invoice_no {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    .company-details, .bill_to {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .second-container {
-        flex-direction: column;
-    }
-
-    .third-container {
-        flex-direction: column;
-    }
-
-    .date-issued, .due_date {
-        margin-bottom: 10px;
-    }
-
-    .item-container table {
-        font-size: 14px;
-    }
-
-    .item-container th, .item-container td {
-        padding: 8px;
-    }
-
-    .notes input {
-        height: 80px;
-    }
-
-    .total {
-        font-size: 14px;
-    }
-
-    .savedetails button {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .company-logo {
-        width: 100%;
-        height: auto;
-        padding-top: 10px;
-        padding-left: 10px;
-        text-align: center;
-    }
-}
+ 
+ 
 
 @media (max-width: 480px) {
     .invoice_container {
@@ -264,14 +210,15 @@
 
     .first_container {
         flex-direction: column;
+        align-items: flex-start;
     }
 
     .invoice_no {
         margin-left: 0;
         margin-top: 10px;
     }
-
-    .company-details, .bill_to {
+   
+    .company_details, .bill_to {
         width: 100%;
         margin-bottom: 10px;
     }
@@ -285,60 +232,22 @@
     }
 
     .item-container {
-        overflow-x: auto; /* Enable horizontal scrolling for the table */
+        overflow-x: auto;
     }
 
-    .item-container table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 12px;
+    .notes {
+        display: flex;
+        flex-direction: column;
     }
 
-    .item-container thead {
-        display: none; /* Hide table headers on small screens */
-    }
-
-    .item-container tbody {
-        display: block;
-        width: 100%;
-    }
-
-    .item-container tr {
-        display: block;
-        width: 100%;
-        margin-bottom: 10px; /* Add space between rows */
-    }
-
-    .item-container td {
-        display: block;
-        text-align: right;
-        padding: 6px;
-        position: relative;
-        border: none;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .item-container td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 10px;
-        font-weight: bold;
-        text-align: left;
-        background: #f2f2f2;
-        top: 0;
-        height: 100%;
-        line-height: 1.5;
-        white-space: nowrap;
-    }
-
-    .item-container td:last-child {
-        border-bottom: none;
+    .notes label {
+        width: 100%; 
     }
 
     .notes input {
-        height: 60px;
+        height: 20px;
+        width: calc(100% - 20px);  
+        margin-right: 0;  
     }
 
     .total {
@@ -355,5 +264,59 @@
         height: auto;
         padding: 10px;
     }
-}
 
+    thead {
+        display: none;
+    }
+    
+    tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+    
+    .item input {
+        width: calc(100% - 20px);  
+    }
+    
+    .amount-fix {
+        margin-left: 0;  
+    }
+
+    tr {
+        margin-bottom: 15px;
+    }
+
+    input {
+        margin-left: 0;  
+    }
+    .discount {
+    
+        height: 30px;
+    }
+     .item ,.rate,.qty{
+        margin-top: 30px;
+       
+     }
+     .rate,.qty{
+        width: 350px;
+        height: 20px;
+     }
+    td {
+        position: relative;
+        padding-left: 50%;
+        white-space: nowrap;
+    }
+    .amount-fix{
+        margin-left: 100px;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+}

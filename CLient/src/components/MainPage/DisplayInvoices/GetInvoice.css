@@ -159,3 +159,16 @@ h3 {
 img {
     width: 100px;
 }
+@media(max-width:780px){
+    .invoice-display{
+        width: 480px;
+    }
+    .invoice-sect-4{
+        width: 120px;
+
+    }
+    .download{
+        margin-right: 100px;
+       
+    }
+}

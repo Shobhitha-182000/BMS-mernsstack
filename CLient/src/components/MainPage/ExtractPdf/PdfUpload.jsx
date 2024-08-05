@@ -64,7 +64,7 @@ const PdfUpload = () => {
             setResponse(result.data.data);
             setError(null);
             updateCalculations();
-            setRefreshKey(prevKey => prevKey + 1); // Trigger refresh of PdfViewer
+            setRefreshKey(prevKey => prevKey + 1); 
         } catch (error) {
             console.error('Error fetching invoice data:', error);
             setError('Error fetching invoice data. Please upload a valid image.');
@@ -188,6 +188,18 @@ const PdfUpload = () => {
                         <p>Upload an image to extract data and view the PDF.</p>
                     </div>
                 )}
+                  {invNo ? (
+                    <div className="pdf-viewer-container-mobile">
+                        <PdfViewer key={refreshKey} invNo={invNo} />
+                    </div>
+                ) : (
+                    <div className="no-pdf-mobile">
+                        {error && <p className="error-message">{error}</p>}
+                        <p>Upload an image to extract data and view the PDF.</p>
+                    </div>
+                )}
+                
+
 
                 {isEditOpen && response && (
                     <div className="extracted-data-container">
@@ -233,8 +245,8 @@ const PdfUpload = () => {
                                     {formData.items.length > 0 ? formData.items.map((item, index) => (
                                         <tr key={index}>
                                             <td><input type="text" value={item.description || ''} onChange={(e) => handleItemChange(index, 'description', e.target.value)} /></td>
-                                            <td><input type="number" value={item.rate || ''} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} /></td>
-                                            <td><input type="number" value={item.qty || ''} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} /></td>
+                                            <td><input type="number" className='number' value={item.rate || ''} onChange={(e) => handleItemChange(index, 'rate', e.target.value)} /></td>
+                                            <td><input type="number" className='number' value={item.qty || ''} onChange={(e) => handleItemChange(index, 'qty', e.target.value)} /></td>
                                             <td>{(parseFloat(item.rate || 0) * parseFloat(item.qty || 0)).toFixed(2)}</td>
                                             <td><MdOutlineRemoveCircleOutline onClick={() => removeItem(index)} /></td>
                                         </tr>

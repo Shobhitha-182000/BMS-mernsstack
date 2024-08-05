@@ -10,8 +10,10 @@
     flex-direction: column;
     height: 100vh;
 }
-
-/* Top navigation bar */
+input{
+    border: 1px solid grey;
+}
+ 
 .top-nav-bar {
     display: flex;
     justify-content: space-between;
@@ -269,11 +271,338 @@
     width: 100%;
 }
 
- 
+.invoice{
+    margin-left: '300px';
+     margin-top: '20px';
+}
 .edit-mode .pdf-viewer-container {
     justify-content: flex-start;  
 }
  
 .edit-mode .pdf-viewer-container .pdf-viewer {
     width: 100%;
+}
+.pdf-viewer-container-mobile,.no-pdf-mobile{
+    display: none;
+}
+/* @media (max-width: 480px) {
+    .content-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .number{
+        width: 350px;
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    .pdf-viewer-container-mobile{
+        padding-top: 2380px;
+        width: 300px;
+        margin-right: 50px;
+        display: block;
+         
+    }
+    .pdf-viewer-container{
+        display: none;
+    }
+
+    .extracted-data-container{
+       
+    }
+    .invoice_container-1 {
+        padding: 10px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .image-preview-container {
+        flex: none;
+        max-width: 100%;
+        display: block;
+    }
+
+    .edit-mode .image-preview-container {
+        flex: none;
+        justify-content: center;
+    }
+
+    .extracted-data-container {
+        margin-left: 0;
+    }
+
+    .invoice_container-1 .first_container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice_no input {
+        width: 100%;
+    }
+
+    .invoice_container-1 .second-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .invoice_container-1 .company_details,
+    .invoice_container-1 .bill_to {
+        width: 100%;
+    }
+
+    .item-container table {
+        width: 100%;
+    }
+     
+}*/
+ @media(max-width: 1025px) {
+    .pdf-viewer-container{
+        margin-top: 800px;
+        width: 800px;
+        margin-left: 70px;
+    }
+
+    .extracted-data-container{
+        background-color: #f7f3f6;
+        margin-top: 460px;
+       
+    }
+    .invoice_container-1 {
+        padding: 10px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .image-preview-container {
+        flex: none;
+        max-width: 100%;
+        display: block;
+    }
+
+    .edit-mode .image-preview-container {
+        flex: none;
+        justify-content: center;
+    }
+
+    .extracted-data-container {
+        margin-left: 0;
+    }
+
+    .invoice_container-1 .first_container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice_no input {
+        width: 100%;
+    }
+
+    .invoice_container-1 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .invoice_container-1 .company_details,
+    .invoice_container-1 .bill_to {
+        width: 100%;
+    }
+    .bill_to{
+        margin-right: 180px;
+    }
+    
+
+    .item-container table {
+        width: 100%;
+    }
+     
+}  
+
+@media (min-width:482px)and (max-width:990px){
+    .pdf-viewer-container{
+        margin-top: 990px;
+        width: 600px;
+        margin-right: 100px;
+        
+    }
+
+    .extracted-data-container{
+        background-color: #f7f3f6;
+        margin-top: 360px;
+       
+    }
+    .invoice_container-1 {
+        padding: 10px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .image-preview-container {
+        flex: none;
+        max-width: 100%;
+        display: block;
+    }
+
+    .edit-mode .image-preview-container {
+        flex: none;
+        justify-content: center;
+    }
+
+    .extracted-data-container {
+        margin-left: 0;
+    }
+
+    .invoice_container-1 .first_container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice_no input {
+        width: 100%;
+    }
+
+    .invoice_container-1  {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .invoice_container-1 .company_details,
+    .invoice_container-1 .bill_to {
+        width: 100%;
+    }
+
+    .item-container table {
+        width: 100%;
+    }
+    
+    .bill_to{
+         margin-right: 50px;
+    }
+     
+} 
+ 
+@media (max-width: 480px) {
+    .invoice_container-1 {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 10px;  
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: auto; / 
+    }
+    
+     
+    .top-nav-bar {
+        display: flex;
+        flex-direction: column;  
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+    
+    .top-nav-buttons {
+        display: flex;
+        flex-direction: column;  
+        gap: 10px;
+        width: 80%;
+        margin-left: 20px;
+    }
+    
+    .upload-button{
+        display: block;
+        width: 83%; 
+        text-align: center;
+
+    } .edit-button {
+        display: block;
+        width: 90%; 
+        text-align: center;
+    }
+ 
+    .content-container {
+        display: flex;
+        flex-direction: column;  
+        gap: 10px;
+        width: 100%;
+    }
+    
+     
+    .pdf-viewer-container-mobile {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 10px; 
+    }
+ 
+    .extracted-data-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    
+    input, textarea {
+        width: 60%;  
+        box-sizing: border-box;  
+    }
+    
+    .item-container table {
+        width: 100%;  
+        border-collapse: collapse;
+    }
+    
+    .item-container th, .item-container td {
+        padding: 10px;
+        text-align: left;
+    }
+    
+    
+    .save-button, .cancel-button {
+        width: 100%;  
+        text-align: center;
+    }
+    
+    .pdf-viewer-container {
+        display: none;  
+    }
+    
+    .pdf-viewer-container-mobile {
+        display: block;
+    }
+
+    .extracted-data-container {
+        border: none;
+        background-color: #f7f3f6;
+    }
+
+    .notes, .total {
+        margin-top: 10px;
+    }
+
+    .notes textarea {
+        height: 100px;
+    }
+    
+    .item-container td input[type='text'], .item-container td input[type='number'] {
+        width: 90%;
+        box-sizing: border-box;   
+    }
+
+    .edit-mode .pdf-viewer-container {
+        justify-content: center; 
+    }
+    
 }

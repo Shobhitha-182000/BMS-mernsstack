@@ -1,13 +1,11 @@
+/* Desktop Styles */
 .getInvoice-container1 {
     border-radius: 10px;
     padding: 20px;
     width: 600px;
     margin: 0 auto;
     margin-bottom: 10px;
-
     height: 600px; 
-    
-    
 }
 
 .getInvoice-container1 label {
@@ -22,7 +20,6 @@
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    
 }
 
 .getInvoice-container button {
@@ -50,7 +47,6 @@
     border-radius: 5px;
     height: auto;
     background-color: #fff;
-    
 }
 
 .invoice-display h2 {
@@ -65,14 +61,12 @@
     height: 50px;
     padding: 10px;
     margin-bottom: 10px;
-   
     display: flex;
-    
-    
 }
-.share{
+
+.share {
     margin-left: 20px;
- }
+}
 
 .invoice-info {
     margin-bottom: 20px;
@@ -176,20 +170,21 @@ img {
     width: 100px;
 }
 
-.email-section{
-   
+.email-section {
     height: 100px;
     width: 100%;
     margin-left: 100px;
 }
-.email-section input{
+
+.email-section input {
     width: 50%;
     padding: 8px;
     margin-top: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-.email-section button{
+
+.email-section button {
     margin-left: 20px;
     padding: 10px 15px;
     background-color: #4cd814;
@@ -197,4 +192,106 @@ img {
     border: 2px solid green;
     border-radius: 5px;
     cursor: pointer;
+}
+
+ 
+@media (max-width: 767px) {
+    .getInvoice-container1 {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0;
+    }
+
+    .getInvoice-container1 .invoice-display {
+        width: 100%;
+        margin: 0;
+    }
+
+    .invoice-section-side {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice-section-1 {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .download {
+        margin-left: 0;
+        width: auto;
+        height: auto;
+    }
+
+    .invoice-details {
+        flex-direction: column;
+    }
+
+    .invoice-section-2, .invoice-section-3 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .invoice-textarea {
+        height: auto;
+    }
+
+    .invoice-section-third {
+        flex-direction: column;
+    }
+
+    .invoice-section-4 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .invoice-sect-4 {
+       width: 100px;
+        padding: 10px;
+    }
+
+    .email-section {
+        margin-left: 0;
+    }
+
+    .email-section input {
+        width: 100%;
+    }
+
+    .email-section button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .invoice-totals{
+        width: 200px;
+    }
+    
+}
+
+ 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .getInvoice-container1 {
+        width: 80%;
+    }
+
+    .invoice-display {
+        width: 80%;
+    }
+
+    .invoice-section-side {
+        flex-direction: row;
+    }
+
+    .invoice-details {
+        flex-direction: row;
+    }
+
+    .invoice-section-2, .invoice-section-3 {
+        width: 48%;
+    }
+    
+   
 }
