@@ -141,7 +141,7 @@
 
 .getInvoice-container1 .invoice-sect-4 {
     background-color: rgb(221, 171, 78);
-    width: 400px;
+    width: 550px;
     padding-left: 30px;
     padding-right: 10px;
 }
@@ -195,7 +195,7 @@ img {
 }
 
  
-@media (max-width: 767px) {
+@media (min-width:491px) and (max-width: 767px) {
     .getInvoice-container1 {
         width: 100%;
         height: auto;
@@ -271,10 +271,91 @@ img {
     
 }
 
+@media (max-width: 480px) {
+    .getInvoice-container1 {
+        width: 80%;
+        height: auto;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0;
+    }
+
+    .getInvoice-container1 .invoice-display {
+        width: 100%;
+        margin: 0;
+    }
+
+    .invoice-section-side {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .invoice-section-1 {
+        width: 60%;
+        margin-right: 180px;
+        justify-content: space-between;
+        
+    }
+    .invoice-section-1 .inv_no1{
+        padding-right: 10px;
+    }
+
+    .download {
+        margin-left: 0;
+        width: auto;
+        height: auto;
+    }
+
+    .invoice-details {
+        flex-direction: column;
+    }
+
+    .invoice-section-2, .invoice-section-3 {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .invoice-textarea {
+        height: auto;
+    }
+
+    .invoice-section-third {
+        flex-direction: column;
+    }
+
+    
+
+    .getInvoice-container1 .invoice-sect-4 {
+       width: 100%;
+       align-items: center;
+       justify-content: center;
+        padding: 10px;
+        /* margin-right: 80px; */
+    }
+
+    .email-section {
+        margin-left: 0;
+    }
+
+    .email-section input {
+        width: 100%;
+    }
+
+    .email-section button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .invoice-totals{
+        width: 200px;
+    }
+    
+}
+
  
 @media (min-width: 768px) and (max-width: 1024px) {
     .getInvoice-container1 {
         width: 80%;
+        margin-top: 0;
     }
 
     .invoice-display {

@@ -1,8 +1,8 @@
-/* General container styling */
+ 
 .invoice_container-1 {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #f9f9f9; */
+    /* border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     padding: 20px;
     max-width: 1300px;
     margin: 0 auto;
@@ -21,7 +21,7 @@ input{
     margin-bottom: 20px;
 }
 
-/* Button styling */
+ 
 .top-nav-buttons {
     display: flex;
     gap: 10px;
@@ -51,8 +51,7 @@ input{
     cursor: pointer;
     width: 100px;
 }
-
-/* Content container styling */
+ 
 .content-container {
     display: flex;
     flex: 1;
@@ -60,14 +59,13 @@ input{
     height: 100%;
     transition: all 0.3s ease;
 }
-
-/* Image preview container styling */
+ 
 .image-preview-container {
     flex: 2;
     max-width: 600px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center image by default */
+    justify-content: center;  
     transition: all 0.3s ease;
 }
 
@@ -79,19 +77,18 @@ input{
     border-radius: 5px;
     transition: width 0.3s ease;
 }
-
-/* When editing mode is active, shift the preview to the left */
+ 
 .edit-mode .image-preview-container {
-    flex: 1; /* Adjusts the flex-grow and flex-basis to move left */
+    flex: 1;  
     max-width: none;
-    justify-content: flex-start; /* Align image to the left */
+    justify-content: flex-start;  
 }
 
 .edit-mode .image-preview {
     width: 100%;
 }
 
-/* Extracted data container styling */
+ 
 .extracted-data-container {
     flex: 1;
     display: flex;
@@ -99,8 +96,7 @@ input{
     margin-left: 10px;
     border: 2px solid rgb(243, 238, 238);
 }
-
-/* Layout for different sections */
+ 
 .invoice_container-1 .first_container, 
 .invoice_container-1 .second-container, 
 .invoice_container-1 .third-container, 
@@ -212,7 +208,7 @@ input{
     border-radius: 5px;
 }
 
-/* Save and Cancel buttons */
+ 
 .savedetails {
     margin-top: 20px;
     text-align: center;
@@ -285,80 +281,8 @@ input{
 .pdf-viewer-container-mobile,.no-pdf-mobile{
     display: none;
 }
-/* @media (max-width: 480px) {
-    .content-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .number{
-        width: 350px;
-        height: 30px;
-        border-radius: 5px;
-    }
-
-    .pdf-viewer-container-mobile{
-        padding-top: 2380px;
-        width: 300px;
-        margin-right: 50px;
-        display: block;
-         
-    }
-    .pdf-viewer-container{
-        display: none;
-    }
-
-    .extracted-data-container{
-       
-    }
-    .invoice_container-1 {
-        padding: 10px;
-    }
-
-    .content-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .image-preview-container {
-        flex: none;
-        max-width: 100%;
-        display: block;
-    }
-
-    .edit-mode .image-preview-container {
-        flex: none;
-        justify-content: center;
-    }
-
-    .extracted-data-container {
-        margin-left: 0;
-    }
-
-    .invoice_container-1 .first_container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .invoice_no input {
-        width: 100%;
-    }
-
-    .invoice_container-1 .second-container {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .invoice_container-1 .company_details,
-    .invoice_container-1 .bill_to {
-        width: 100%;
-    }
-
-    .item-container table {
-        width: 100%;
-    }
-     
-}*/
+ 
+    
  @media(max-width: 1025px) {
     .pdf-viewer-container{
         margin-top: 800px;
@@ -427,9 +351,11 @@ input{
 
 @media (min-width:482px)and (max-width:990px){
     .pdf-viewer-container{
-        margin-top: 990px;
+        margin-top: 830px;
         width: 600px;
-        margin-right: 100px;
+        padding-right: 100px;
+        margin-left: 10px;
+     
         
     }
 
@@ -494,15 +420,13 @@ input{
  
 @media (max-width: 480px) {
     .invoice_container-1 {
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 10px;  
-        max-width: 100%;
-        margin: 0 auto;
+        background-color: #fff9f9;
+        margin-left: 0;
+ 
+     
         display: flex;
         flex-direction: column;
-        height: auto; / 
+        height: auto; 
     }
     
      
@@ -525,21 +449,26 @@ input{
         display: block;
         width: 83%; 
         text-align: center;
+        margin-left: 30px;
 
     } .edit-button {
         display: block;
         width: 90%; 
         text-align: center;
+        margin-left: 30px;
     }
  
     .content-container {
         display: flex;
         flex-direction: column;  
-        gap: 10px;
+        /* gap: 10px; */
         width: 100%;
+        margin-right: 60px;
     }
     
-     
+     .top-nav-bar h2{
+        margin-left: 30px;
+     }
     .pdf-viewer-container-mobile {
         display: block;
         width: 100%;
@@ -548,6 +477,7 @@ input{
     }
  
     .extracted-data-container {
+        margin-top: 10px;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -593,12 +523,23 @@ input{
     }
 
     .notes textarea {
-        height: 100px;
+        height: 80px;
     }
     
     .item-container td input[type='text'], .item-container td input[type='number'] {
         width: 90%;
         box-sizing: border-box;   
+        border: 1px solid gray;
+    }
+
+    .item-container td input[type='number'] {
+         
+        height: 30px;
+        border-radius: 5px;
+    }
+    .invoice-summary input[type='number']{
+        height: 30px;
+        border-radius: 5px;
     }
 
     .edit-mode .pdf-viewer-container {

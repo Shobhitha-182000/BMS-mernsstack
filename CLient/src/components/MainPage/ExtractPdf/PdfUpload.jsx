@@ -4,6 +4,7 @@ import './UploadImage.css';
 import PdfViewer from './PdfViewer';
 import { MdOutlineRemoveCircleOutline } from 'react-icons/md';
 import { IoMdAdd } from 'react-icons/io';
+import { toast } from 'react-toastify';
 
 const PdfUpload = () => {
     const [image, setImage] = useState(null);
@@ -44,7 +45,9 @@ const PdfUpload = () => {
                 getInvoiceData(invoiceNo);
                 setError(null);
                 setPdfReady(false);  
+                toast.success('Successfully upload')
             } catch (error) {
+                toast.error(error)
                 console.error('Error uploading image:', error);
                 setError('Error extracting data from image.');
             }
@@ -65,7 +68,9 @@ const PdfUpload = () => {
             setError(null);
             updateCalculations();
             setRefreshKey(prevKey => prevKey + 1); 
+            toast.success('Successfully applied');
         } catch (error) {
+            toast.error(error);
             console.error('Error fetching invoice data:', error);
             setError('Error fetching invoice data. Please upload a valid image.');
         }

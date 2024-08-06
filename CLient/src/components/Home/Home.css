@@ -2,13 +2,12 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color:white;
-    
+    background-color: white;
 }
 
 .home-container .top-nav {
     height: 100px;
-    background-color:white;
+    background-color: white;
     display: flex;
     align-items: center;
     padding: 0 20px;
@@ -60,8 +59,6 @@
     margin-left: 200px;
     margin-top: 100px;
     margin-right: 100px;
-    
-
 }
 
 .home-container .right-content-description {
@@ -69,7 +66,6 @@
     color: rgb(155, 44, 4);
     animation: fadeIn 5s ease-in-out;
     line-height: 1.5;
-     
 }
 
 @keyframes fadeIn {
@@ -81,9 +77,94 @@
     }
 }
 
-.home-container .left-side-logo img{
+.home-container .left-side-logo img {
     margin-top: 20px;
     height: 80px;
     border-radius: 10px;
     width: 80px;
 }
+
+ 
+
+ 
+@media(min-width:481px)and(max-width: 1024px) {
+    .home-container .top-nav {
+        /* flex-direction: column; */
+        height: auto;
+        padding: 10px;
+    }
+
+    .home-container .login, .home-container .signup {
+        width: 20%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .home-container .main-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .home-container .left-side-content {
+        background-color: antiquewhite;
+        width: 600px;
+        margin-right: 0;
+        margin-bottom: 100px;
+        border-radius: 10px;
+        height: 600px;
+    }
+
+    .home-container .right-side-content {
+        margin-left: 0;
+        margin-top: 20px;
+        margin-right: 0;
+    }
+
+    .home-container .right-content-description {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .home-container .left-side-logo img {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container .login{
+        margin-left: 50px;
+    }
+    .home-container .main-content{
+        display: block;
+    }
+    .home-container .login, .home-container .signup {
+        font-size: small;
+        padding: 8px;
+        height: 40px;
+        width: 70%;
+        margin-top: 10px;
+         
+    }
+    /* .home-container .left-side-content{
+        margin-right: 300px;
+    } */
+
+  
+    .home-container .right-side-content {
+        margin-left: 0;
+        margin-top: 20px;
+        margin-right: 0;
+    }
+
+    .home-container .right-content-description {
+        font-size: 20px;
+        text-align: center;
+    }
+    .home-container .left-side-logo img {
+        height: 50px;
+        width: 50px;
+    }
+}
+ 

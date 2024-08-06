@@ -1020,7 +1020,7 @@ const PdfViewer = ({ invNo }) => {
                         <img src={`/files/${invoiceData.logo}`} alt='logo'/>
                         <div className="invoice-section-1">
                             <h3>Invoice No:</h3>
-                            <h3>{invoiceData.invoice_no}</h3>
+                            <h3 className='inv_no1'>{invoiceData.invoice_no}</h3>
                         </div>
                     </div>
                     <div className="invoice-info">
@@ -1092,9 +1092,9 @@ const PdfViewer = ({ invNo }) => {
                                 <h3>{invoiceData.discount}%</h3>
                             </div>
                         </div>
-                        <div className="invoice-sect-4" style={{width:'250px'}}>
-                            <h3 style={{ color: 'green',marginLeft:'100px' }}>Total:</h3>
-                            <h3 style={{ color: 'green' }}>{safeToFixed(invoiceData.total)}</h3>
+                        <div className="invoice-sect-4"  >
+                            <h3 >Total:</h3>
+                            <h3 >{safeToFixed(invoiceData.total)}</h3>
                         </div>
                     </div>
                 </div>

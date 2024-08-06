@@ -13,6 +13,7 @@ const invoiceRouters=require('./routes/InvoiceRoutes');
 const Invoice=require('./models/Invoice')
 const textExtract=require('./routes/textExtraxtRoutes')
 const imageRouters=require('./routes/imageUploadRoutes ');
+const InvoiceFileModel=require('./models/InvoiceFile')
 
 
 app.use('/auth',authRouters);

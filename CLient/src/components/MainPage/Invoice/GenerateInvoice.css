@@ -83,41 +83,38 @@
  
 .company_details input, .bill_to input {
     display: block;
-    width: calc(100% - 20px); /* Full width minus padding */
+    width: calc(100% - 20px);  
     height: 30px;
     margin-top: 10px;
 }
-
-/* Styling for third container */
+ 
 .third-container {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
+    flex-wrap: wrap;  
 }
 
-/* Date issued and due date styling */
+ 
 .date-issued, .due_date {
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
-    min-width: 200px; /* Ensure minimum width for better alignment */
+    min-width: 200px; 
     box-sizing: border-box;
 }
 
-/* Inputs within date issued and due date */
+ 
 .date-issued input, .due_date input {
-    width: calc(100% - 20px); /* Full width minus padding */
+    width: calc(100% - 20px);  
     margin-top: 10px;
     height: 30px;
 }
-
-/* Styling for item container */
+ 
 .item-container {
     margin-top: 20px;
 }
-
-/* Styling for table end section */
+  
 .table-end {
     display: flex;
     justify-content: flex-end;
@@ -199,7 +196,7 @@
  
  
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .invoice_container {
         padding: 5px;
     }
@@ -216,11 +213,23 @@
     .invoice_no {
         margin-left: 0;
         margin-top: 10px;
+
     }
-   
+    .invoice_container .invoice_no input{
+        width: 100px;
+    }
+    .invoice_container .company_details input{
+        width: 310px;
+        
+    }
+    .invoice_container .bill_to input{
+        width: 310px;
+        
+    }
     .company_details, .bill_to {
         width: 100%;
         margin-bottom: 10px;
+        border: none;
     }
 
     .date-issued, .due_date {

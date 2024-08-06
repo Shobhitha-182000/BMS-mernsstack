@@ -2,16 +2,37 @@ const User= require("../models/User");
 const bcrypt=require("bcrypt");
 const jwt=require('jsonwebtoken')
 const cache=require('../utils/cache')
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const imagesPath = path.join(__dirname, '..', '..', 'Client', 'public', 'files');
+        cb(null, imagesPath);
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + path.extname(file.originalname);
+        cb(null, uniqueSuffix);
+    },
+});
+
+
+const upload = multer({ storage: storage }).single('logo');
 
 const Signup=async(req,res)=>{
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({ message: "File upload error" });
+        }
     try {
         const {name,email,password}=req.body;
+        const logo=req.file.filename;
         
         const user=await User.findOne({email});
         console.log(user);
         if(!user){
             const hashedPassword=await bcrypt.hash(password,10)
-            const newUser=new User({name,email,password:hashedPassword})
+            const newUser=new User({name,email,password:hashedPassword,logo})
             await newUser.save();
             return res.status(200).json({data:newUser,message:"User saved successsfully"})
         }
@@ -22,6 +43,7 @@ const Signup=async(req,res)=>{
         return res.status(500).json({ message: "Server error" });
         
     }
+})
 }
 
 const Login=async(req,res)=>{
