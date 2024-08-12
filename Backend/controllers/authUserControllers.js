@@ -26,13 +26,13 @@ const Signup=async(req,res)=>{
         }
     try {
         const {name,email,password}=req.body;
-        const logo=req.file.filename;
+        // const logo=req.file.filename;
         
         const user=await User.findOne({email});
         console.log(user);
         if(!user){
             const hashedPassword=await bcrypt.hash(password,10)
-            const newUser=new User({name,email,password:hashedPassword,logo})
+            const newUser=new User({name,email,password:hashedPassword})
             await newUser.save();
             return res.status(200).json({data:newUser,message:"User saved successsfully"})
         }

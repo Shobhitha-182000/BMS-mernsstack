@@ -1,29 +1,14 @@
-const { AddInvoice, getOneInvoice, EditInvoice } = require('../controllers/InvoiceController');
+const { AddInvoice, getOneInvoice, EditInvoice, getAllInvoice } = require('../controllers/InvoiceController');
 
-const router=require('express').Router();
-// const multer = require('multer');
-// const path = require('path');
-// const fs = require('fs');
-
-// //to store image
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-      
-//       const imagesPath = path.join(__dirname, '..', '..', 'CLient', 'public','files');
-//       cb(null, imagesPath);
-//     },
-//     filename: function (req, file, cb) {
-//       const uniqueSuffix = Date.now() + path.extname(file.originalname);
-//       cb(null, uniqueSuffix);
-//     },
-//   });
-  
-//   const upload = multer({ storage: storage });
+const router = require('express').Router();
 
 
-router.post('/invoice',AddInvoice)
-router.put('/invoice/:invoice_no',EditInvoice)
-router.get('/invoice/:invoice_no',getOneInvoice);
 
 
-module.exports=router;
+router.post('/invoice', AddInvoice)
+router.put('/invoice/:invoice_no', EditInvoice)
+router.get('/invoice/:invoice_no', getOneInvoice);
+router.get('/invoice', getAllInvoice);
+
+
+module.exports = router;

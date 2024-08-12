@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -15,9 +16,13 @@ const Login = () => {
             const { token } = response.data;
             console.log(response.data.data.name)
             localStorage.setItem('username', response.data.data.name);
+            toast.success('Login succesfully')
            
            Navigate('/user/dashboard');
         } catch (error) {
+            const errorMessage = error.response?.data?.message || error.message || 'An error occurred';
+        toast.error(errorMessage);
+            toast.error(error)
             console.error("Login failed", error);
         }
     };

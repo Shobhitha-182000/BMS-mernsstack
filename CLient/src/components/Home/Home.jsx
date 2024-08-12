@@ -36,10 +36,10 @@ const Home = () => {
           <img src={Immensphere} alt="Immensphere Logo" />
         </div>
         <button className="login" onClick={handleLoginClick}> 
-          {isLoginOpen ? 'Close Login' : 'Login'} 
+          {isLoginOpen ? 'Logout' : 'Login'} 
         </button>
         <button className="signup" onClick={handleSignupClick}> 
-          {isSignupOpen ? 'Close Signup' : 'Signup'} 
+          {isSignupOpen ? 'Signin' : 'Signup'} 
         </button>
       </div>
       {isLoginOpen && <Login />}

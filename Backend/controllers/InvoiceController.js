@@ -41,7 +41,7 @@ const AddInvoice = async (req, res) => {
             const formattedDate = new Date(date); 
             const formattedDueDate = new Date(due_date); 
 
-            // Parse items as JSON if it's a string
+           
             const parsedItems = Array.isArray(items) ? items : JSON.parse(items);
 
             const newInvoice = await Invoice.create({
@@ -58,6 +58,9 @@ const AddInvoice = async (req, res) => {
                 total: parseFloat(total),
                 note
             });
+            console.log('note :',note);
+            
+            console.log(newInvoice)
 
             return res.status(200).json({ data: newInvoice, message: "Invoice created successfully" });
         } catch (error) {
@@ -90,8 +93,11 @@ const EditInvoice = async (req, res) => {
                 amount,
                 discount,
                 total,
-                Note,
+                note,
             } = req.body;
+
+            console.log('note',note);
+            
 
             const logo = req.file ? req.file.filename : null;
             const formattedDate = new Date(date); 
@@ -114,12 +120,12 @@ const EditInvoice = async (req, res) => {
             invoice.amount = amount || invoice.amount;
             invoice.discount = discount || invoice.discount;
             invoice.total = total || invoice.total;
-            invoice.note = Note || invoice.note;
+            invoice.note = note || invoice.note;
 
             if (logo) {
                 invoice.logo = logo;
             }
-            // console.log(invoice.total)
+            console.log(invoice.note)
 
             await invoice.save();
 
@@ -136,11 +142,10 @@ const getOneInvoice=async(req,res)=>{
        const {invoice_no}=req.params;
 
    const invoice=await Invoice.findOne({invoice_no});
-//    console.log(invoice_no);
+ 
    if(invoice){
        const details=invoice.date;
-
-    //    console.log(invoice);
+ 
        return res.status(202).json({data:invoice,message:'Found'})
    }
    return res.status(401).json({message:'Not Found'})
@@ -150,8 +155,27 @@ const getOneInvoice=async(req,res)=>{
     }
    
 }
+const getAllInvoice=async(req,res)=>{
+    try {
+        const {invoice_no}=req.params;
+ 
+    const invoice=await Invoice.find();
+  
+    if(invoice){
+        const details=invoice.date;
+        console.log(invoice);
+        
+  
+        return res.status(202).json({data:invoice,message:'Found'})
+    }
+    return res.status(401).json({message:'No invoice found'})
+        
+     } catch (error) {
+        console.log(error);
+     }
+}
 
-module.exports = { AddInvoice ,getOneInvoice,EditInvoice};
+module.exports = { AddInvoice ,getOneInvoice,EditInvoice,getAllInvoice};
 
 function formatDate(date) {
     const d = new Date(date);

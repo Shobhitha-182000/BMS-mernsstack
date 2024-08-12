@@ -47,6 +47,12 @@ const GenerateInvoice = () => {
         setItems([...items, { description: '', qty: '', rate: '' }]);
     };
 
+    const removeItem = (index) => {
+        const updatedItems = items.filter((_, i) => i !== index);
+        setItems(updatedItems);
+        updateCalculations();
+    };
+
     const calculateSubtotal = () => {
         const subtotalAmount = items.reduce((acc, item) => acc + (parseFloat(item.qty) * parseFloat(item.rate) || 0), 0);
         setSubTotal(subtotalAmount);
@@ -138,51 +144,62 @@ const GenerateInvoice = () => {
                     </div>
                 </div>
                 <div className="item-container">
-    <table>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Rate</th>
-                <th>Qty</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            {items.map((item, index) => (
-                <tr key={index}>
-                    <td data-label="Item">
-                        <input 
-                        className='item'
-                            type="text" 
-                            value={item.description} 
-                            onChange={(e) => handleItemChange(index, 'description', e.target.value)} 
-                        />
-                    </td>
-                    <td data-label="Rate">
-                        <input 
-                        className='rate'
-                            type="number" 
-                            value={item.rate} 
-                            onChange={(e) => handleItemChange(index, 'rate', e.target.value)} 
-                        />
-                    </td>
-                    <td data-label="Qty">
-                        <input 
-                        className='qty'
-                            type="number" 
-                            value={item.qty} 
-                            onChange={(e) => handleItemChange(index, 'qty', e.target.value)} 
-                        />
-                    </td>
-                    <td data-label="Amount">
-                        <div className="amount-fix">{(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}</div>
-                        
-                    </td>
-                </tr>
-            ))}
-        </tbody>
-    </table>
-</div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colSpan="4">
+                                    <IoMdAdd onClick={addItem} style={{ cursor: 'pointer' }} />
+                                    Add Item
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Item</th>
+                                <th>Rate</th>
+                                <th>Qty</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {items.map((item, index) => (
+                                <tr key={index}>
+                                    <td data-label="Item">
+                                        <input
+                                            className='item'
+                                            type="text"
+                                            value={item.description}
+                                            onChange={(e) => handleItemChange(index, 'description', e.target.value)}
+                                        />
+                                    </td>
+                                    <td data-label="Rate">
+                                        <input
+                                            className='rate'
+                                            type="number"
+                                            value={item.rate}
+                                            onChange={(e) => handleItemChange(index, 'rate', e.target.value)}
+                                        />
+                                    </td>
+                                    <td data-label="Qty">
+                                        <input
+                                            className='qty'
+                                            type="number"
+                                            value={item.qty}
+                                            onChange={(e) => handleItemChange(index, 'qty', e.target.value)}
+                                        />
+                                    </td>
+                                    <td data-label="Amount">
+                                        <div className="amount-fix">{(parseFloat(item.rate) * parseFloat(item.qty) || 0).toFixed(2)}</div>
+                                    </td>
+                                    <td data-label="Action" className='action'>
+                                        <button type="button" onClick={() => removeItem(index)} style={{ color: 'red' }}>
+                                            Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
                 <div className="last-container">
                     <div className="notes"><label>Notes</label> 

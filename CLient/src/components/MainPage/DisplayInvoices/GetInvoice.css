@@ -86,7 +86,7 @@
 
 .invoice-details {
     display: flex;
-    gap: 20px; /* Space between company and bill_to sections */
+    gap: 20px;  
 }
 
 .invoice-section-2, .invoice-section-3 {
@@ -159,16 +159,51 @@ h3 {
 img {
     width: 100px;
 }
-@media(max-width:780px){
+ .invoice-display .note-heading{
+    display: flex;
+    
+ } 
+  .invoice-display .note-heading h3{ 
+    margin-left: 30PX;
+ }
+   
+
+@media(max-width:1025px){
+    .getInvoice-container input{
+        margin-left: 50px;
+       
+    }
     .invoice-display{
         width: 480px;
+        margin-left: 30px;
+    }
+    .invoice-sect-4{
+        width: 100px;
+
+    }
+    .download{
+        margin-right: 10px;
+       
+    }
+}
+
+@media(max-width:480px){
+    .invoice-display{
+        width: 280px;
     }
     .invoice-sect-4{
         width: 120px;
 
     }
-    .download{
-        margin-right: 100px;
+    .invoice-display .download{
+        padding-left: 100px;
+        
        
+    }
+    .invoice-section-side .invoice-section-1{
+         
+        width: 200px;
+        padding-right: 20px;
+
     }
 }

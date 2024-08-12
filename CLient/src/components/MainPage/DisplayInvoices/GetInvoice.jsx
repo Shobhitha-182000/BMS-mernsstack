@@ -166,7 +166,7 @@ const GetInvoice = () => {
                     </table>
                     <div className="note">
                         <div className="note-heading">
-                            Note: <h3>{invoiceData.Note}</h3>
+                            <div className="notename">Note: <h3>{invoiceData.note}</h3></div> 
                         </div>
                     </div>
 

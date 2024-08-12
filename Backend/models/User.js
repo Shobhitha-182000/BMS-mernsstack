@@ -5,15 +5,14 @@ const { type } = require('os');
 const userSchema=new Mongoose.Schema({
     name:{
         type:String,
-        required:true
+        
     },
     email:{
         type:String,
-        required:true
+         
     },
     password:{
-        type:String,
-        required:true
+        type:String, 
     },logo:{
         type:String
     }

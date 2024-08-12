@@ -18,7 +18,8 @@ const Signup = () => {
             toast.success('successfully register');
             Navigate('/login');
         } catch (error) {
-            toast.error(error);
+            const errorMessage = error.response?.data?.message || error.message || 'An error occurred';
+        toast.error(errorMessage);
             console.error("Signup failed", error);
         }
     };

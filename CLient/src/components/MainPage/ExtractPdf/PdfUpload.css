@@ -194,6 +194,11 @@ img {
     cursor: pointer;
 }
 
+td input[type='Number']{
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(223, 215, 215);
+}
  
 @media (min-width:491px) and (max-width: 767px) {
     .getInvoice-container1 {

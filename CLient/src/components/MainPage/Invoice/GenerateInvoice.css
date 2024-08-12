@@ -195,6 +195,12 @@
 }
  
  
+td input[type='Number']{
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid rgb(223, 215, 215);
+}
+ 
 
 @media screen and (max-width: 480px) {
     .invoice_container {
@@ -327,5 +333,9 @@
         padding-right: 10px;
         white-space: nowrap;
         font-weight: bold;
+    }
+    .action button{
+        margin-left: 50px;
+        border: white;
     }
 }
